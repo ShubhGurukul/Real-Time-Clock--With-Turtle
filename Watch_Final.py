@@ -5,16 +5,27 @@ turtle.mode('logo')
 turtle.speed(0)
 
 
-# For hand Back
+# For hand Backlength from center
 def jump(distance, store=0):
-    pass
-
+    turtle.penup()
+    turtle.right(store)
+    turtle.forward(-distance*.15)
+    turtle.left(store)
+    turtle.pendown()
 
 # Draw hand
 def hand(length, top):
-    pass
+    turtle.forward(length*1.15)
+    turtle.right(90)
+    turtle.forward(top/2.0)
+    turtle.left(120)
+    turtle.forward(top)
+    turtle.left(120)
+    turtle.forward(top)
+    turtle.left(120)
+    turtle.forward(top/2.0)
 
-# make hand shape for all 
+# make hand shape for all hands
 def make_hand_shape(name, length, top):
     pass
 
@@ -24,7 +35,6 @@ def draw_clockFace(radius):
     pass
 
 
-    pass
 
 
 def setup():
