@@ -120,16 +120,7 @@ def date(z):
     return "%s %d %d" % (m, t, j)
 
 
-
-
-def tick():
-    t = datetime.today()
-
-    second = t.second + t.microsecond*0.000001
-    minute = t.minute + second/60.0
-    hour = t.hour + minute/60.0
-    
-    turtle.tracer(False)
+def Writer(t):
     writer = turtle.Turtle()
     writer.clear()
     writer.home()
@@ -144,6 +135,17 @@ def tick():
     writer.penup()
     writer.forward(85)
     writer.pendown()
+
+
+def tick():
+    t = datetime.today()
+
+    second = t.second + t.microsecond*0.000001
+    minute = t.minute + second/60.0
+    hour = t.hour + minute/60.0
+    
+    turtle.tracer(False)
+    Writer(t)
     turtle.tracer(True)
     
     second_hand.setheading(second*6)
@@ -162,10 +164,7 @@ def main():
     setup()
     turtle.tracer(True)
     tick()
-    # return "EVENTLOOP"
 
 if __name__ == "__main__":
-    msg = main()
-    # print(msg)
-    # mainloop()
+
     turtle.mainloop()
