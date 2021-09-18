@@ -107,11 +107,17 @@ def setup():
 
 
 def weekday(t):
-    pass
-
+    weekday = ["Monday", "Tuesday", "Wednesday",
+        "Thursday", "Friday", "Saturday", "Sunday"]
+    return weekday[t.weekday()]
 
 def date(z):
-    pass
+    month = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "June",
+             "July", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."]
+    j = z.year
+    m = month[z.month - 1]
+    t = z.day
+    return "%s %d %d" % (m, t, j)
 
 
 
@@ -123,16 +129,43 @@ def tick():
     minute = t.minute + second/60.0
     hour = t.hour + minute/60.0
     
+    turtle.tracer(False)
+    writer = turtle.Turtle()
+    writer.clear()
+    writer.home()
+    writer.penup()
+    writer.forward(65)
+    writer.pendown()
+    writer.write(weekday(t),align="center", font=("Courier", 14, "bold"))
+    writer.penup()
+    writer.backward(150)
+    writer.pendown()
+    writer.write(date(t),align="center", font=("Courier", 14, "bold"))
+    writer.penup()
+    writer.forward(85)
+    writer.pendown()
+    turtle.tracer(True)
+    
     second_hand.setheading(second*6)
     minute_hand.setheading(minute*6)
     hour_hand.setheading(hour*30)
 
     turtle.ontimer(tick, 100)
     
-#tick()
+    
+# setup()
+# tick()    
+
 
 def main():
-    pass
+    turtle.tracer(False)
+    setup()
+    turtle.tracer(True)
+    tick()
+    # return "EVENTLOOP"
 
 if __name__ == "__main__":
+    msg = main()
+    # print(msg)
+    # mainloop()
     turtle.mainloop()
