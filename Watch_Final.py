@@ -76,7 +76,35 @@ def draw_clockFace(radius):
 
 
 def setup():
-    pass
+    global second_hand, minute_hand, hour_hand, writer
+    make_hand_shape('second_hand', 120, 25)
+    make_hand_shape('minute_hand', 135, 35)
+    make_hand_shape('hour_hand', 90, 25)
+    draw_clockFace(300)
+    
+    second_hand = turtle.Turtle()
+    second_hand.shape('second_hand')
+    second_hand.color("gray20", "gray80")
+
+    minute_hand = turtle.Turtle()
+    minute_hand.shape('minute_hand')
+    minute_hand.color('orange','red2')
+
+
+    hour_hand = turtle.Turtle()
+    hour_hand.shape('hour_hand')
+    hour_hand.color('blue3','deepskyblue')
+    for hand in second_hand, minute_hand, hour_hand:
+        hand.resizemode('user')
+        hand.shapesize(1,1,3)
+        hand.speed(0)
+    turtle.hideturtle()
+    writer = turtle.Turtle()
+    #writer.mode("logo")
+    writer.hideturtle()
+    writer.penup()
+    writer.backward(85)
+
 
 def weekday(t):
     pass
@@ -89,8 +117,19 @@ def date(z):
 
 
 def tick():
-    pass
+    t = datetime.today()
 
+    second = t.second + t.microsecond*0.000001
+    minute = t.minute + second/60.0
+    hour = t.hour + minute/60.0
+    
+    second_hand.setheading(second*6)
+    minute_hand.setheading(minute*6)
+    hour_hand.setheading(hour*30)
+
+    turtle.ontimer(tick, 100)
+    
+#tick()
 
 def main():
     pass
