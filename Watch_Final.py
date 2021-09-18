@@ -27,12 +27,50 @@ def hand(length, top):
 
 # make hand shape for all hands
 def make_hand_shape(name, length, top):
-    pass
+    turtle.reset()
+    jump(length)
+    turtle.begin_poly()
+    hand(length, top)
+    turtle.end_poly()
+    hand_shape = turtle.get_poly()
+    turtle.register_shape(name, hand_shape)
 
 
 # Draw Clock face
 def draw_clockFace(radius):
-    pass
+    turtle.reset()
+    
+    turtle.penup()
+    turtle.left(90)
+    turtle.goto(0,radius)
+    turtle.color('deepskyblue', 'orange')
+    
+    turtle.pendown()
+    turtle.begin_fill()
+    turtle.circle(radius)
+    turtle.end_fill()
+
+    # Inner Part of Watch
+    turtle.goto()
+    
+    turtle.pensize(10)
+    turtle.pencolor("red")
+    turtle.penup()
+    turtle.home()
+    for i in range(12):
+        turtle.penup()
+        turtle.right(30)
+        turtle.goto(0,0)
+        turtle.forward(200)
+        turtle.pendown()
+        turtle.forward(25)
+
+        turtle.penup()
+        turtle.forward(30)
+        turtle.pendown()
+        turtle.write(str(i+1),align="center",font=("Arial", 18,"bold"))
+
+# draw_clockFace(300)
 
 
 
