@@ -1,5 +1,5 @@
 import turtle
-
+from datetime import datetime
 turtle.pensize(5)
 turtle.mode('logo')
 turtle.speed(0)
@@ -51,7 +51,6 @@ def draw_clockFace(radius):
     turtle.end_fill()
 
     # Inner Part of Watch
-    turtle.goto()
     
     turtle.pensize(10)
     turtle.pencolor("red")
@@ -72,9 +71,6 @@ def draw_clockFace(radius):
 
 # draw_clockFace(300)
 
-
-
-
 def setup():
     global second_hand, minute_hand, hour_hand, writer
     make_hand_shape('second_hand', 120, 25)
@@ -88,7 +84,7 @@ def setup():
 
     minute_hand = turtle.Turtle()
     minute_hand.shape('minute_hand')
-    minute_hand.color('orange','red2')
+    minute_hand.color('deepskyblue','red2')
 
 
     hour_hand = turtle.Turtle()
@@ -166,5 +162,5 @@ def main():
     tick()
 
 if __name__ == "__main__":
-
+    main()
     turtle.mainloop()
